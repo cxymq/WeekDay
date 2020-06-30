@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  WeekCalendar
+//  WeekdayClip
 //
-//  Created by nazimai on 2020/6/28.
+//  Created by nazimai on 2020/6/29.
 //  Copyright © 2020 nazimai. All rights reserved.
 //
 
@@ -10,7 +10,6 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow * window;
 
 @end
 

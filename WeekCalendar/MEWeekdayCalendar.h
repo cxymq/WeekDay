@@ -1,5 +1,5 @@
 //
-//  SceneDelegate.h
+//  MEWeekdayCalendar.h
 //  WeekCalendar
 //
 //  Created by nazimai on 2020/6/28.
@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SceneDelegate : UIResponder <UIWindowSceneDelegate>
+NS_ASSUME_NONNULL_BEGIN
 
-@property (strong, nonatomic) UIWindow * window;
+@interface MEWeekdayCalendar : UIView
 
 @end
 
+NS_ASSUME_NONNULL_END

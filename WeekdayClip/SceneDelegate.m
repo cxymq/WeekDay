@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.m
-//  WeekCalendar
+//  WeekdayClip
 //
-//  Created by nazimai on 2020/6/28.
+//  Created by nazimai on 2020/6/29.
 //  Copyright © 2020 nazimai. All rights reserved.
 //
 
@@ -26,7 +26,7 @@
     // Called as the scene is being released by the system.
     // This occurs shortly after the scene enters the background, or when its session is discarded.
     // Release any resources associated with this scene that can be re-created the next time the scene connects.
-    // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+    // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
 }
 
 

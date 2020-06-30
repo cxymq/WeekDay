@@ -7,21 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF15B26E24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15B26D24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m */; };
+		AF15B27124A8BABB002739EA /* MECalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15B27024A8BABB002739EA /* MECalendarWeekdayView.m */; };
+		AF15B27424A8C57C002739EA /* MEWeekdayCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15B27324A8C57C002739EA /* MEWeekdayCalendar.m */; };
 		AF1A073B24A8978800D1B04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A073A24A8978800D1B04F /* AppDelegate.m */; };
-		AF1A073E24A8978800D1B04F /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A073D24A8978800D1B04F /* SceneDelegate.m */; };
 		AF1A074124A8978800D1B04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A074024A8978800D1B04F /* ViewController.m */; };
 		AF1A074424A8978800D1B04F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A074224A8978800D1B04F /* Main.storyboard */; };
 		AF1A074624A8978B00D1B04F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1A074524A8978B00D1B04F /* Assets.xcassets */; };
 		AF1A074924A8978B00D1B04F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A074724A8978B00D1B04F /* LaunchScreen.storyboard */; };
 		AF1A074C24A8978B00D1B04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A074B24A8978B00D1B04F /* main.m */; };
+		AF4E876024A9BE2F00FCE417 /* WeekdayClipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4E875F24A9BE2F00FCE417 /* WeekdayClipTests.m */; };
+		AF4E876B24A9BE2F00FCE417 /* WeekdayClipUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4E876A24A9BE2F00FCE417 /* WeekdayClipUITests.m */; };
+		AF7FD82124A9F1390055F620 /* MEOperaUpdateScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */; };
+		AF7FD82524A9F1770055F620 /* MEOperaUpdateScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */; };
+		AF82FB7824A8998C000AF878 /* MEWeekdayCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82FB7724A8998C000AF878 /* MEWeekdayCalendarCell.m */; };
+		AFFF331324A89D80008C7277 /* MEWeekdayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFFF331224A89D80008C7277 /* MEWeekdayHeaderView.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AF4E877024A9BE2F00FCE417 /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AF15B26C24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MEWeekdayCalendarExtensions.h"; sourceTree = "<group>"; };
+		AF15B26D24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MEWeekdayCalendarExtensions.m"; sourceTree = "<group>"; };
+		AF15B26F24A8BABB002739EA /* MECalendarWeekdayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECalendarWeekdayView.h; sourceTree = "<group>"; };
+		AF15B27024A8BABB002739EA /* MECalendarWeekdayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECalendarWeekdayView.m; sourceTree = "<group>"; };
+		AF15B27224A8C57C002739EA /* MEWeekdayCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWeekdayCalendar.h; sourceTree = "<group>"; };
+		AF15B27324A8C57C002739EA /* MEWeekdayCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWeekdayCalendar.m; sourceTree = "<group>"; };
 		AF1A073624A8978800D1B04F /* WeekCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeekCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1A073924A8978800D1B04F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AF1A073A24A8978800D1B04F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AF1A073C24A8978800D1B04F /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		AF1A073D24A8978800D1B04F /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		AF1A073F24A8978800D1B04F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		AF1A074024A8978800D1B04F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AF1A074324A8978800D1B04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -29,10 +54,50 @@
 		AF1A074824A8978B00D1B04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF1A074A24A8978B00D1B04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1A074B24A8978B00D1B04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AF4E874224A9BE2E00FCE417 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AF4E874324A9BE2E00FCE417 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AF4E874524A9BE2E00FCE417 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		AF4E874624A9BE2E00FCE417 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		AF4E874824A9BE2E00FCE417 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AF4E874924A9BE2E00FCE417 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AF4E874C24A9BE2E00FCE417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AF4E874E24A9BE2E00FCE417 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AF4E875124A9BE2E00FCE417 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF4E875324A9BE2E00FCE417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF4E875424A9BE2E00FCE417 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AF4E875624A9BE2E00FCE417 /* WeekdayClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeekdayClip.entitlements; sourceTree = "<group>"; };
+		AF4E875B24A9BE2F00FCE417 /* WeekdayClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeekdayClipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF4E875F24A9BE2F00FCE417 /* WeekdayClipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeekdayClipTests.m; sourceTree = "<group>"; };
+		AF4E876124A9BE2F00FCE417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF4E876624A9BE2F00FCE417 /* WeekdayClipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeekdayClipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF4E876A24A9BE2F00FCE417 /* WeekdayClipUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeekdayClipUITests.m; sourceTree = "<group>"; };
+		AF4E876C24A9BE2F00FCE417 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF7FD81F24A9F1390055F620 /* MEOperaUpdateScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateScheduleView.h; sourceTree = "<group>"; };
+		AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateScheduleView.m; sourceTree = "<group>"; };
+		AF7FD82224A9F1770055F620 /* MEOperaUpdateScheduleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateScheduleCell.h; sourceTree = "<group>"; };
+		AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateScheduleCell.m; sourceTree = "<group>"; };
+		AF82FB7624A8998C000AF878 /* MEWeekdayCalendarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWeekdayCalendarCell.h; sourceTree = "<group>"; };
+		AF82FB7724A8998C000AF878 /* MEWeekdayCalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWeekdayCalendarCell.m; sourceTree = "<group>"; };
+		AFFF331124A89D80008C7277 /* MEWeekdayHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWeekdayHeaderView.h; sourceTree = "<group>"; };
+		AFFF331224A89D80008C7277 /* MEWeekdayHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWeekdayHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AF1A073324A8978800D1B04F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF4E875824A9BE2F00FCE417 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF4E876324A9BE2F00FCE417 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				AF1A073824A8978800D1B04F /* WeekCalendar */,
+				AF4E874124A9BE2E00FCE417 /* WeekdayClip */,
+				AF4E875E24A9BE2F00FCE417 /* WeekdayClipTests */,
+				AF4E876924A9BE2F00FCE417 /* WeekdayClipUITests */,
 				AF1A073724A8978800D1B04F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				AF1A073624A8978800D1B04F /* WeekCalendar.app */,
+				AF4E875B24A9BE2F00FCE417 /* WeekdayClipTests.xctest */,
+				AF4E876624A9BE2F00FCE417 /* WeekdayClipUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,10 +133,22 @@
 			children = (
 				AF1A073924A8978800D1B04F /* AppDelegate.h */,
 				AF1A073A24A8978800D1B04F /* AppDelegate.m */,
-				AF1A073C24A8978800D1B04F /* SceneDelegate.h */,
-				AF1A073D24A8978800D1B04F /* SceneDelegate.m */,
 				AF1A073F24A8978800D1B04F /* ViewController.h */,
 				AF1A074024A8978800D1B04F /* ViewController.m */,
+				AF7FD81F24A9F1390055F620 /* MEOperaUpdateScheduleView.h */,
+				AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */,
+				AF7FD82224A9F1770055F620 /* MEOperaUpdateScheduleCell.h */,
+				AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */,
+				AF15B27224A8C57C002739EA /* MEWeekdayCalendar.h */,
+				AF15B27324A8C57C002739EA /* MEWeekdayCalendar.m */,
+				AF82FB7624A8998C000AF878 /* MEWeekdayCalendarCell.h */,
+				AF82FB7724A8998C000AF878 /* MEWeekdayCalendarCell.m */,
+				AF15B26F24A8BABB002739EA /* MECalendarWeekdayView.h */,
+				AF15B27024A8BABB002739EA /* MECalendarWeekdayView.m */,
+				AFFF331124A89D80008C7277 /* MEWeekdayHeaderView.h */,
+				AFFF331224A89D80008C7277 /* MEWeekdayHeaderView.m */,
+				AF15B26C24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.h */,
+				AF15B26D24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m */,
 				AF1A074224A8978800D1B04F /* Main.storyboard */,
 				AF1A074524A8978B00D1B04F /* Assets.xcassets */,
 				AF1A074724A8978B00D1B04F /* LaunchScreen.storyboard */,
@@ -74,6 +156,43 @@
 				AF1A074B24A8978B00D1B04F /* main.m */,
 			);
 			path = WeekCalendar;
+			sourceTree = "<group>";
+		};
+		AF4E874124A9BE2E00FCE417 /* WeekdayClip */ = {
+			isa = PBXGroup;
+			children = (
+				AF4E874224A9BE2E00FCE417 /* AppDelegate.h */,
+				AF4E874324A9BE2E00FCE417 /* AppDelegate.m */,
+				AF4E874524A9BE2E00FCE417 /* SceneDelegate.h */,
+				AF4E874624A9BE2E00FCE417 /* SceneDelegate.m */,
+				AF4E874824A9BE2E00FCE417 /* ViewController.h */,
+				AF4E874924A9BE2E00FCE417 /* ViewController.m */,
+				AF4E874B24A9BE2E00FCE417 /* Main.storyboard */,
+				AF4E874E24A9BE2E00FCE417 /* Assets.xcassets */,
+				AF4E875024A9BE2E00FCE417 /* LaunchScreen.storyboard */,
+				AF4E875324A9BE2E00FCE417 /* Info.plist */,
+				AF4E875424A9BE2E00FCE417 /* main.m */,
+				AF4E875624A9BE2E00FCE417 /* WeekdayClip.entitlements */,
+			);
+			path = WeekdayClip;
+			sourceTree = "<group>";
+		};
+		AF4E875E24A9BE2F00FCE417 /* WeekdayClipTests */ = {
+			isa = PBXGroup;
+			children = (
+				AF4E875F24A9BE2F00FCE417 /* WeekdayClipTests.m */,
+				AF4E876124A9BE2F00FCE417 /* Info.plist */,
+			);
+			path = WeekdayClipTests;
+			sourceTree = "<group>";
+		};
+		AF4E876924A9BE2F00FCE417 /* WeekdayClipUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AF4E876A24A9BE2F00FCE417 /* WeekdayClipUITests.m */,
+				AF4E876C24A9BE2F00FCE417 /* Info.plist */,
+			);
+			path = WeekdayClipUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +205,7 @@
 				AF1A073224A8978800D1B04F /* Sources */,
 				AF1A073324A8978800D1B04F /* Frameworks */,
 				AF1A073424A8978800D1B04F /* Resources */,
+				AF4E877024A9BE2F00FCE417 /* Embed App Clips */,
 			);
 			buildRules = (
 			);
@@ -95,6 +215,40 @@
 			productName = WeekCalendar;
 			productReference = AF1A073624A8978800D1B04F /* WeekCalendar.app */;
 			productType = "com.apple.product-type.application";
+		};
+		AF4E875A24A9BE2F00FCE417 /* WeekdayClipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF4E877824A9BE2F00FCE417 /* Build configuration list for PBXNativeTarget "WeekdayClipTests" */;
+			buildPhases = (
+				AF4E875724A9BE2F00FCE417 /* Sources */,
+				AF4E875824A9BE2F00FCE417 /* Frameworks */,
+				AF4E875924A9BE2F00FCE417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeekdayClipTests;
+			productName = WeekdayClipTests;
+			productReference = AF4E875B24A9BE2F00FCE417 /* WeekdayClipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AF4E876524A9BE2F00FCE417 /* WeekdayClipUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF4E877924A9BE2F00FCE417 /* Build configuration list for PBXNativeTarget "WeekdayClipUITests" */;
+			buildPhases = (
+				AF4E876224A9BE2F00FCE417 /* Sources */,
+				AF4E876324A9BE2F00FCE417 /* Frameworks */,
+				AF4E876424A9BE2F00FCE417 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WeekdayClipUITests;
+			productName = WeekdayClipUITests;
+			productReference = AF4E876624A9BE2F00FCE417 /* WeekdayClipUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -107,6 +261,14 @@
 				TargetAttributes = {
 					AF1A073524A8978800D1B04F = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					AF4E875A24A9BE2F00FCE417 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = AF4E873F24A9BE2E00FCE417;
+					};
+					AF4E876524A9BE2F00FCE417 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = AF4E873F24A9BE2E00FCE417;
 					};
 				};
 			};
@@ -124,6 +286,8 @@
 			projectRoot = "";
 			targets = (
 				AF1A073524A8978800D1B04F /* WeekCalendar */,
+				AF4E875A24A9BE2F00FCE417 /* WeekdayClipTests */,
+				AF4E876524A9BE2F00FCE417 /* WeekdayClipUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -139,6 +303,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		AF4E875924A9BE2F00FCE417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF4E876424A9BE2F00FCE417 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -146,10 +324,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF82FB7824A8998C000AF878 /* MEWeekdayCalendarCell.m in Sources */,
+				AF7FD82524A9F1770055F620 /* MEOperaUpdateScheduleCell.m in Sources */,
 				AF1A074124A8978800D1B04F /* ViewController.m in Sources */,
+				AF7FD82124A9F1390055F620 /* MEOperaUpdateScheduleView.m in Sources */,
+				AF15B26E24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m in Sources */,
+				AF15B27124A8BABB002739EA /* MECalendarWeekdayView.m in Sources */,
+				AFFF331324A89D80008C7277 /* MEWeekdayHeaderView.m in Sources */,
+				AF15B27424A8C57C002739EA /* MEWeekdayCalendar.m in Sources */,
 				AF1A073B24A8978800D1B04F /* AppDelegate.m in Sources */,
 				AF1A074C24A8978B00D1B04F /* main.m in Sources */,
-				AF1A073E24A8978800D1B04F /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF4E875724A9BE2F00FCE417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF4E876024A9BE2F00FCE417 /* WeekdayClipTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF4E876224A9BE2F00FCE417 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF4E876B24A9BE2F00FCE417 /* WeekdayClipUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +368,22 @@
 			isa = PBXVariantGroup;
 			children = (
 				AF1A074824A8978B00D1B04F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AF4E874B24A9BE2E00FCE417 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF4E874C24A9BE2E00FCE417 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AF4E875024A9BE2E00FCE417 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF4E875124A9BE2E00FCE417 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -292,6 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EJ429UWLN6;
 				INFOPLIST_FILE = WeekCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +526,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = EJ429UWLN6;
 				INFOPLIST_FILE = WeekCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,6 +534,88 @@
 				PRODUCT_BUNDLE_IDENTIFIER = maoer.WeekCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AF4E877324A9BE2F00FCE417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EJ429UWLN6;
+				INFOPLIST_FILE = WeekdayClipTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = maoer.WeekCalendar.WeekdayClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeekdayClip.app/WeekdayClip";
+			};
+			name = Debug;
+		};
+		AF4E877424A9BE2F00FCE417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EJ429UWLN6;
+				INFOPLIST_FILE = WeekdayClipTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = maoer.WeekCalendar.WeekdayClipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WeekdayClip.app/WeekdayClip";
+			};
+			name = Release;
+		};
+		AF4E877524A9BE2F00FCE417 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EJ429UWLN6;
+				INFOPLIST_FILE = WeekdayClipUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = maoer.WeekCalendar.WeekdayClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WeekdayClip;
+			};
+			name = Debug;
+		};
+		AF4E877624A9BE2F00FCE417 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = EJ429UWLN6;
+				INFOPLIST_FILE = WeekdayClipUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = maoer.WeekCalendar.WeekdayClipUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WeekdayClip;
 			};
 			name = Release;
 		};
@@ -336,6 +636,24 @@
 			buildConfigurations = (
 				AF1A075024A8978B00D1B04F /* Debug */,
 				AF1A075124A8978B00D1B04F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF4E877824A9BE2F00FCE417 /* Build configuration list for PBXNativeTarget "WeekdayClipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF4E877324A9BE2F00FCE417 /* Debug */,
+				AF4E877424A9BE2F00FCE417 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF4E877924A9BE2F00FCE417 /* Build configuration list for PBXNativeTarget "WeekdayClipUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF4E877524A9BE2F00FCE417 /* Debug */,
+				AF4E877624A9BE2F00FCE417 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
