@@ -86,14 +86,23 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected]) && ![_nextSelected isEqualToDictionary:_selected]) {
+    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected])) {
         [self selectDateWithIndexPath:indexPath scheduleCell:(MEOperaUpdateScheduleCell *)cell];
     }
+}
 
-//    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_lastSelected]) && !cell.selected) {
-//        NSLog(@"%@", cell.selected ? @"YES" : @"NO");
-//        [self deselectDateWithScheduleCell:(MEOperaUpdateScheduleCell *)cell];
-//    }
+-(void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"didEndDisplayingCell");
+    NSLog(@"willDisplayCell- %@", cell.selected ? @"YES" : @"NO");
+    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && cell.selected) {
+        [self deselectDateWithScheduleCell:(MEOperaUpdateScheduleCell *)cell];
+    }
+}
+
+#pragma mark - UIScrollDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"scrollViewDidScroll");
 }
 
 #pragma mark - Private
@@ -104,7 +113,7 @@
         cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
     }
     _nextSelected = _datas[indexPath.item];
-    if (cell && _selected && ![_selected isEqualToDictionary:_nextSelected]) {
+    if (cell && _selected && _nextSelected) {
         _selected = _nextSelected;
         cell.selected = YES;
         cell.dateIsToday = indexPath.item == 6 ? YES : NO;

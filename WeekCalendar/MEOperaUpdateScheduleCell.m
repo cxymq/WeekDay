@@ -141,9 +141,7 @@
     if (![textColor isEqual:_timeLabel.textColor]) {
         _timeLabel.textColor = textColor;
     }
-    
-//    UIColor *borderColor = self.colorForCellBorder;
-//    UIColor *fillColor = self.colorForCellFill;
+
     NSLog(@"%@", self.selected ? @"YES" : @"NO");
     BOOL shouldHideShapeLayer = !self.selected;
 
