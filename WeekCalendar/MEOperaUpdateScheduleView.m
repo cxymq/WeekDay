@@ -11,8 +11,8 @@
 @interface MEOperaUpdateScheduleView()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-@property (nonatomic, strong) NSDictionary *lastSelected;
-@property (nonatomic, strong) NSDictionary *selected;
+//@property (nonatomic, strong) NSDictionary *lastSelected;
+//@property (nonatomic, strong) NSDictionary *selected;
 @property (nonatomic, strong) NSDictionary *nextSelected;
 @property (nonatomic, strong) NSMutableSet *endDisplaySelectItem;
 
@@ -65,13 +65,14 @@
     cell.timeTitle = self.datas[indexPath.item][@"time"];
     cell.weekLabel.font = [UIFont systemFontOfSize:12];
     cell.timeLabel.font = [UIFont systemFontOfSize:17];
-    if (indexPath.item == 6 && !cell.selected) {
+    if ([_datas[indexPath.item][@"week"] isEqualToString:@"三"] && !cell.selected) {
         cell.dotIndicator.hidden = NO;
         cell.selected = YES;
         cell.dateIsToday = YES;
         [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-        _lastSelected = [_datas objectAtIndex:6];
-        _selected = _lastSelected;
+//        _lastSelected = [_datas objectAtIndex:indexPath.item];
+//        _selected = _lastSelected;
+        [_endDisplaySelectItem addObject:[_datas objectAtIndex:indexPath.item]];
     }
     [cell configureAppearance];
     return cell;
@@ -84,22 +85,22 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self deselectDateWithScheduleCell:nil];
+    [self deselectDateWithIndexPath:indexPath scheduleCell:nil];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected]) && ![_nextSelected isEqualToDictionary:_selected]) {
+    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected]) && ![_endDisplaySelectItem containsObject:_nextSelected]) {
         [self selectDateWithIndexPath:indexPath scheduleCell:(MEOperaUpdateScheduleCell *)cell];
     }
 
     if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && self.endDisplaySelectItem.count > 1) {
-        [self.endDisplaySelectItem enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
-            if (![obj isEqual:_selected]) {
-                [self deselectDateWithScheduleCell:(MEOperaUpdateScheduleCell *)cell];
+        NSArray *arr = [self.endDisplaySelectItem copy];
+        for (NSDictionary *obj in arr) {
+            if (![obj[@"week"] isEqualToString:_nextSelected[@"week"]]) {
+                [self deselectDateWithIndexPath:indexPath scheduleCell:(MEOperaUpdateScheduleCell *)cell];
                 [self.endDisplaySelectItem removeObject:obj];
-                *stop = YES;
             }
-        }];
+        }
     }
 }
 
@@ -117,12 +118,14 @@
         cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
     }
     _nextSelected = _datas[indexPath.item];
-    if (cell && _selected && ![_selected isEqualToDictionary:_nextSelected]) {
-        _selected = _nextSelected;
+//    if (cell && _selected && ![_selected isEqualToDictionary:_nextSelected]) {
+    if (cell && _endDisplaySelectItem.count > 0 && ![_endDisplaySelectItem containsObject:_nextSelected]) {
+//        _selected = _nextSelected;
+        [_endDisplaySelectItem containsObject:_nextSelected];
         cell.selected = YES;
-        cell.dateIsToday = indexPath.item == 6 ? YES : NO;
+        cell.dateIsToday = [_datas[indexPath.item][@"week"] isEqualToString:@"三"] ? YES : NO;
         [cell performSelecting];
-        _lastSelected = _selected;
+//        _lastSelected = _selected;
         [_collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
     if (cell && self.delegate && [self.delegate respondsToSelector:@selector(operaUpdateSchedule:didSelectItem:)]) {
@@ -130,12 +133,8 @@
     }
 }
 
-- (void)deselectDateWithScheduleCell:(nullable MEOperaUpdateScheduleCell *)scheduleCell {
-    if (!_lastSelected) {
-        _lastSelected = _selected;
-        return;
-    }
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_datas indexOfObject:_lastSelected] inSection:0];
+- (void)deselectDateWithIndexPath:(NSIndexPath *)indexPath scheduleCell:(nullable MEOperaUpdateScheduleCell *)scheduleCell {
+
     MEOperaUpdateScheduleCell *cell = scheduleCell;
     if (!cell) {
         cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
@@ -153,7 +152,14 @@
 - (void)scrollToItem:(NSInteger)item {
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:0];
-    [self deselectDateWithScheduleCell:nil];
+
+    NSArray *arr = [self.endDisplaySelectItem copy];
+    for (NSDictionary *obj in arr) {
+        if (![obj[@"week"] isEqualToString:_nextSelected[@"week"]]) {
+            [self deselectDateWithIndexPath:[NSIndexPath indexPathForItem:[_datas indexOfObject:obj] inSection:0] scheduleCell:nil];
+            [self.endDisplaySelectItem removeObject:obj];
+        }
+    }
     [self selectDateWithIndexPath:indexPath scheduleCell:nil];
 }
 

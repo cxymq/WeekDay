@@ -60,8 +60,11 @@ static NSInteger item;
     NSDictionary *dic7 = [NSDictionary dictionaryWithObjectsAndKeys: @"六", @"week", @"26", @"time", nil];
     NSDictionary *dic8 = [NSDictionary dictionaryWithObjectsAndKeys: @"八", @"week", @"27", @"time", nil];
     NSDictionary *dic9 = [NSDictionary dictionaryWithObjectsAndKeys: @"九", @"week", @"28", @"time", nil];
+    NSDictionary *dic10 = [NSDictionary dictionaryWithObjectsAndKeys: @"十", @"week", @"29", @"time", nil];
+    NSDictionary *dic11 = [NSDictionary dictionaryWithObjectsAndKeys: @"王", @"week", @"30", @"time", nil];
     NSArray *datas = @[dic, dic2, dic3, dic4, dic5, dic6, dic7
                        , dic8, dic9
+//                       , dic10, dic11
     ];
     return datas;
 }
