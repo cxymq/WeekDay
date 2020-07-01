@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSDictionary *lastSelected;
 @property (nonatomic, strong) NSDictionary *selected;
 @property (nonatomic, strong) NSDictionary *nextSelected;
+@property (nonatomic, strong) NSMutableSet *endDisplaySelectItem;
 
 @end
 
@@ -37,6 +38,7 @@
 }
 
 - (void)commonInit {
+    self.endDisplaySelectItem = [[NSMutableSet alloc] init];
     MEOperaUpdateScheduleLayout *layout = [[MEOperaUpdateScheduleLayout alloc] init];
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
@@ -86,23 +88,25 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected])) {
+    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected]) && ![_nextSelected isEqualToDictionary:_selected]) {
         [self selectDateWithIndexPath:indexPath scheduleCell:(MEOperaUpdateScheduleCell *)cell];
+    }
+
+    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && self.endDisplaySelectItem.count > 1) {
+        [self.endDisplaySelectItem enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if (![obj isEqual:_selected]) {
+                [self deselectDateWithScheduleCell:(MEOperaUpdateScheduleCell *)cell];
+                [self.endDisplaySelectItem removeObject:obj];
+                *stop = YES;
+            }
+        }];
     }
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"didEndDisplayingCell");
-    NSLog(@"willDisplayCell- %@", cell.selected ? @"YES" : @"NO");
-    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && cell.selected) {
-        [self deselectDateWithScheduleCell:(MEOperaUpdateScheduleCell *)cell];
+    if (cell.selected) {
+        [self.endDisplaySelectItem addObject:[_datas objectAtIndex:indexPath.item]];
     }
-}
-
-#pragma mark - UIScrollDelegate
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    NSLog(@"scrollViewDidScroll");
 }
 
 #pragma mark - Private
@@ -113,7 +117,7 @@
         cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
     }
     _nextSelected = _datas[indexPath.item];
-    if (cell && _selected && _nextSelected) {
+    if (cell && _selected && ![_selected isEqualToDictionary:_nextSelected]) {
         _selected = _nextSelected;
         cell.selected = YES;
         cell.dateIsToday = indexPath.item == 6 ? YES : NO;
@@ -157,7 +161,7 @@
 
 @implementation MEOperaUpdateScheduleLayout
 
--(instancetype)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -169,7 +173,7 @@
     return self;
 }
 
--(void)prepareLayout {
+- (void)prepareLayout {
     [super prepareLayout];
     self.itemSize = CGSizeMake(CGRectGetWidth(self.collectionView.frame) / 7 , CGRectGetHeight(self.collectionView.frame));
 }

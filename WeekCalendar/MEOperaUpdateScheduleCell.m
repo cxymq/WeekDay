@@ -74,7 +74,7 @@
     self.contentView.clipsToBounds = NO;
 }
 
--(void)layoutSubviews {
+- (void)layoutSubviews {
     [super layoutSubviews];
     _dotIndicator.frame = CGRectMake(0, 0, self.me_width, 5.f);
     CGFloat height = self.dotIndicator.me_top + self.dotIndicator.me_height + 4;
@@ -142,7 +142,6 @@
         _timeLabel.textColor = textColor;
     }
 
-    NSLog(@"%@", self.selected ? @"YES" : @"NO");
     BOOL shouldHideShapeLayer = !self.selected;
 
     if (_shapeLayer.opacity == shouldHideShapeLayer) {
@@ -189,7 +188,7 @@
     return UIColor.grayColor;
 }
 
--(UIColor *)colorForCellBorder {
+- (UIColor *)colorForCellBorder {
     if (self.selected) {
         return UIColor.redColor;
     }
@@ -207,7 +206,7 @@
 
 @implementation MEOperaUpdateScheduleDotIndicator
 
--(instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
@@ -221,7 +220,7 @@
     return self;
 }
 
--(void)layoutSubviews {
+- (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat diameter = MIN(MIN(self.me_width, self.me_height), 5.f);
     self.contentView.me_height = self.me_height;
@@ -229,13 +228,13 @@
     self.contentView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 }
 
--(void)layoutSublayersOfLayer:(CALayer *)layer {
+- (void)layoutSublayersOfLayer:(CALayer *)layer {
     [super layoutSublayersOfLayer:layer];
     if (layer == self.layer) {
         CGFloat diameter = MIN(MIN(self.me_width, self.me_height), 5.f);
-        _dotLayer.frame = CGRectMake(0, (self.me_height-diameter)*0.5, diameter, diameter);
-        if (_dotLayer.cornerRadius != diameter/2) {
-            _dotLayer.cornerRadius = diameter/2;
+        _dotLayer.frame = CGRectMake(0, (self.me_height-diameter) * 0.5, diameter, diameter);
+        if (_dotLayer.cornerRadius != diameter / 2) {
+            _dotLayer.cornerRadius = diameter / 2;
         }
     }
 }
