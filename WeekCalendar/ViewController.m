@@ -58,8 +58,8 @@ static NSInteger item;
     NSDictionary *dic5 = [NSDictionary dictionaryWithObjectsAndKeys: @"四", @"week", @"24", @"time", nil];
     NSDictionary *dic6 = [NSDictionary dictionaryWithObjectsAndKeys: @"五", @"week", @"25", @"time", nil];
     NSDictionary *dic7 = [NSDictionary dictionaryWithObjectsAndKeys: @"六", @"week", @"26", @"time", nil];
-    NSDictionary *dic8 = [NSDictionary dictionaryWithObjectsAndKeys: @"日", @"week", @"27", @"time", nil];
-    NSDictionary *dic9 = [NSDictionary dictionaryWithObjectsAndKeys: @"一", @"week", @"28", @"time", nil];
+    NSDictionary *dic8 = [NSDictionary dictionaryWithObjectsAndKeys: @"八", @"week", @"27", @"time", nil];
+    NSDictionary *dic9 = [NSDictionary dictionaryWithObjectsAndKeys: @"九", @"week", @"28", @"time", nil];
     NSArray *datas = @[dic, dic2, dic3, dic4, dic5, dic6, dic7
 //                       , dic8, dic9
     ];

@@ -47,6 +47,8 @@
     collectionView.dataSource = self;
     collectionView.clipsToBounds = YES;
     collectionView.bounces = NO;
+    collectionView.allowsSelection = YES;
+    collectionView.allowsMultipleSelection = NO;
     [collectionView registerClass:[MEOperaUpdateScheduleCell class] forCellWithReuseIdentifier:@"MEOperaUpdateScheduleCell"];
     [self addSubview:collectionView];
     self.collectionView = collectionView;
@@ -69,6 +71,7 @@
         cell.dateIsToday = YES;
 //        [_lastSelecteds addObject:[_datas objectAtIndex:6]];
 //        _selected = [_lastSelecteds lastObject];
+        [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
         _lastSelected = [_datas objectAtIndex:6];
         _selected = _lastSelected;
     }
@@ -81,6 +84,10 @@
     [self selectDateWithIndexPath:indexPath];
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self deselectDate];
+}
+
 #pragma mark - Private
 
 - (void)selectDateWithIndexPath:(NSIndexPath *)indexPath {
@@ -90,10 +97,11 @@
         _selected = _nextSelected;
         cell.selected = YES;
         cell.dateIsToday = indexPath.item == 6 ? YES : NO;
-        [self deselectDate];
+//        [self deselectDate];
         [cell performSelecting];
 //        [_lastSelecteds addObject:_selected];
         _lastSelected = _selected;
+        [_collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
     if (cell && self.delegate && [self.delegate respondsToSelector:@selector(operaUpdateSchedule:didSelectItem:)]) {
         [self.delegate operaUpdateSchedule:self didSelectItem:_datas[indexPath.item]];
@@ -127,6 +135,7 @@
     }
     cell.selected = NO;
     [cell configureAppearance];
+    [_collectionView deselectItemAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -166,6 +175,7 @@
 - (void)scrollToItem:(NSInteger)item {
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:0];
+    [self deselectDate];
     [self selectDateWithIndexPath:indexPath];
 }
 
