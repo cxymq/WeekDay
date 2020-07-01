@@ -11,7 +11,6 @@
 @interface MEOperaUpdateScheduleView()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
-//@property (nonatomic, strong) NSMutableArray *lastSelecteds;
 @property (nonatomic, strong) NSDictionary *lastSelected;
 @property (nonatomic, strong) NSDictionary *selected;
 @property (nonatomic, strong) NSDictionary *nextSelected;
@@ -38,7 +37,6 @@
 }
 
 - (void)commonInit {
-//    _lastSelecteds = [[NSMutableArray alloc] init];
     MEOperaUpdateScheduleLayout *layout = [[MEOperaUpdateScheduleLayout alloc] init];
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
     collectionView.showsHorizontalScrollIndicator = NO;
@@ -69,8 +67,6 @@
         cell.dotIndicator.hidden = NO;
         cell.selected = YES;
         cell.dateIsToday = YES;
-//        [_lastSelecteds addObject:[_datas objectAtIndex:6]];
-//        _selected = [_lastSelecteds lastObject];
         [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
         _lastSelected = [_datas objectAtIndex:6];
         _selected = _lastSelected;
@@ -80,26 +76,39 @@
 }
 
 #pragma mark - UICollectionViewDelegate
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self selectDateWithIndexPath:indexPath];
+    [self selectDateWithIndexPath:indexPath scheduleCell:nil];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [self deselectDate];
+    [self deselectDateWithScheduleCell:nil];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_nextSelected]) && ![_nextSelected isEqualToDictionary:_selected]) {
+        [self selectDateWithIndexPath:indexPath scheduleCell:(MEOperaUpdateScheduleCell *)cell];
+    }
+
+//    if ([cell isKindOfClass:[MEOperaUpdateScheduleCell class]] && (indexPath.item == [_datas indexOfObject:_lastSelected]) && !cell.selected) {
+//        NSLog(@"%@", cell.selected ? @"YES" : @"NO");
+//        [self deselectDateWithScheduleCell:(MEOperaUpdateScheduleCell *)cell];
+//    }
 }
 
 #pragma mark - Private
 
-- (void)selectDateWithIndexPath:(NSIndexPath *)indexPath {
-    MEOperaUpdateScheduleCell *cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+- (void)selectDateWithIndexPath:(NSIndexPath *)indexPath scheduleCell:(nullable MEOperaUpdateScheduleCell *)scheduleCell {
+    MEOperaUpdateScheduleCell *cell = scheduleCell;
+    if (!cell) {
+        cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    }
     _nextSelected = _datas[indexPath.item];
     if (cell && _selected && ![_selected isEqualToDictionary:_nextSelected]) {
         _selected = _nextSelected;
         cell.selected = YES;
         cell.dateIsToday = indexPath.item == 6 ? YES : NO;
-//        [self deselectDate];
         [cell performSelecting];
-//        [_lastSelecteds addObject:_selected];
         _lastSelected = _selected;
         [_collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     }
@@ -108,28 +117,16 @@
     }
 }
 
-- (void)deselectDate {
-//    if (_lastSelecteds.count <= 0) {
+- (void)deselectDateWithScheduleCell:(nullable MEOperaUpdateScheduleCell *)scheduleCell {
     if (!_lastSelected) {
-        //        [_lastSelecteds addObject:_selected];
         _lastSelected = _selected;
         return;
     }
-
-//    [_lastSelecteds enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_datas indexOfObject:_lastSelecteds[idx]] inSection:0];
-//        NSLog(@"%ld - %ld", indexPath.section, indexPath.item);
-//        MEOperaUpdateScheduleCell *cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
-//        if (!cell) {
-//            return;
-//        }
-//        cell.selected = NO;
-//        [cell configureAppearance];
-//        [_lastSelecteds removeObjectAtIndex:idx];
-//    }];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_datas indexOfObject:_lastSelected] inSection:0];
-    NSLog(@"%ld - %ld", indexPath.section, indexPath.item);
-    MEOperaUpdateScheduleCell *cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    MEOperaUpdateScheduleCell *cell = scheduleCell;
+    if (!cell) {
+        cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
+    }
     if (!cell) {
         return;
     }
@@ -138,45 +135,13 @@
     [_collectionView deselectItemAtIndexPath:indexPath animated:NO];
 }
 
-#pragma mark - UIScrollViewDelegate
-
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    [self deselectDate];
-//    if (_lastSelecteds.count > 1 && [_lastSelecteds containsObject:_selected]) {
-//        [_lastSelecteds enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_datas indexOfObject:_lastSelecteds[idx]] inSection:0];
-//            if ([_collectionView.indexPathsForVisibleItems containsObject:indexPath]) {
-//
-//            }
-//        }];
-//    }
-//}
-
-//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-//    if (![_lastSelecteds containsObject:_selected]) {
-//        [self deselectDate];
-//        [_lastSelecteds enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_datas indexOfObject:_lastSelecteds[idx]] inSection:0];
-//            if ([_collectionView.indexPathsForVisibleItems containsObject:indexPath]) {
-//                [self deselectDate];
-//            }
-//        }];
-//    }
-//    if (![_nextSelected isEqualToDictionary:_selected]) {
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_datas indexOfObject:_nextSelected] inSection:0];
-//        if ([_collectionView.indexPathsForVisibleItems containsObject:indexPath]) {
-//            [self selectDateWithIndexPath:indexPath];
-//        }
-//    }
-//}
-
 #pragma mark - Public
 
 - (void)scrollToItem:(NSInteger)item {
     [_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:0];
-    [self deselectDate];
-    [self selectDateWithIndexPath:indexPath];
+    [self deselectDateWithScheduleCell:nil];
+    [self selectDateWithIndexPath:indexPath scheduleCell:nil];
 }
 
 @end

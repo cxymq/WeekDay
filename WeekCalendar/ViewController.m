@@ -61,7 +61,7 @@ static NSInteger item;
     NSDictionary *dic8 = [NSDictionary dictionaryWithObjectsAndKeys: @"八", @"week", @"27", @"time", nil];
     NSDictionary *dic9 = [NSDictionary dictionaryWithObjectsAndKeys: @"九", @"week", @"28", @"time", nil];
     NSArray *datas = @[dic, dic2, dic3, dic4, dic5, dic6, dic7
-//                       , dic8, dic9
+                       , dic8, dic9
     ];
     return datas;
 }
