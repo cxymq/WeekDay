@@ -21,9 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *timeTitle;
 @property (nonatomic, strong) UILabel *timeLabel;
 
-@property (weak, nonatomic) CAShapeLayer *shapeLayer;
+@property (nonatomic, weak) CAShapeLayer *shapeLayer;
 
-@property (assign, nonatomic) BOOL dateIsToday;
+@property (nonatomic, assign) BOOL dateIsToday;
+
+@property (nonatomic, assign) BOOL isSelectedFlag;
 
 - (void)performSelecting;
 - (void)configureAppearance;

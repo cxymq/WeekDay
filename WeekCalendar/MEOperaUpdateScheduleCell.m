@@ -134,7 +134,7 @@
         _timeLabel.textColor = textColor;
     }
 
-    BOOL shouldHideShapeLayer = !self.selected;
+    BOOL shouldHideShapeLayer = !self.isSelectedFlag;
 
     if (_shapeLayer.opacity == shouldHideShapeLayer) {
         _shapeLayer.opacity = !shouldHideShapeLayer;
@@ -160,28 +160,28 @@
 #pragma mark - Properties
 
 - (UIColor *)colorForCellFill {
-    if (self.selected && self.dateIsToday) {
+    if (self.isSelectedFlag && self.dateIsToday) {
         return UIColor.systemPinkColor;
     }
     return UIColor.whiteColor;
 }
 
 - (UIColor *)colorForWeekLabel {
-    if (self.selected) {
+    if (self.isSelectedFlag) {
         return UIColor.redColor;
     }
     return UIColor.blackColor;
 }
 
 - (UIColor *)colorForTimeLabel {
-    if (self.selected) {
+    if (self.isSelectedFlag) {
         return self.dateIsToday ? UIColor.whiteColor : UIColor.redColor;
     }
     return UIColor.grayColor;
 }
 
 - (UIColor *)colorForCellBorder {
-    if (self.selected) {
+    if (self.isSelectedFlag) {
         return UIColor.redColor;
     }
     return UIColor.whiteColor;
