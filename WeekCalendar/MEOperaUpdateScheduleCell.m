@@ -16,6 +16,8 @@
 @property (nonatomic, strong) UIColor *colorForCellBorder;
 @property (nonatomic, strong) UIColor *colorForCellFill;
 
+@property (nonatomic, weak) CAShapeLayer *bottomShapeLayer;
+
 @end
 
 @implementation MEOperaUpdateScheduleCell
@@ -35,6 +37,7 @@
     UILabel *weekLabel;
     CAShapeLayer *shapeLayer;
     UILabel *timeLabel;
+    CAShapeLayer *bottomShapeLayer;
 
     dotIndicator = [[MEOperaUpdateScheduleDotIndicator alloc] initWithFrame:CGRectZero];
     dotIndicator.backgroundColor = [UIColor clearColor];
@@ -61,6 +64,14 @@
     shapeLayer.opacity = 0;
     [self.contentView.layer insertSublayer:shapeLayer below:_timeLabel.layer];
     self.shapeLayer = shapeLayer;
+
+    bottomShapeLayer = [CAShapeLayer layer];
+    bottomShapeLayer.backgroundColor = [UIColor lightGrayColor].CGColor;
+    bottomShapeLayer.borderWidth = 2.0;
+    bottomShapeLayer.borderColor = [UIColor lightGrayColor].CGColor;
+    bottomShapeLayer.opacity = 1;
+    [self.contentView.layer addSublayer:bottomShapeLayer];
+    self.bottomShapeLayer = bottomShapeLayer;
 
     self.clipsToBounds = NO;
     self.contentView.clipsToBounds = NO;
@@ -89,6 +100,12 @@
     CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:_shapeLayer.bounds cornerRadius:_shapeLayer.me_width * 0.5].CGPath;
     if (!CGPathEqualToPath(_shapeLayer.path, path)) {
         _shapeLayer.path = path;
+    }
+    height = height + _shapeLayer.me_height + shapeOffSet + 9;
+    _bottomShapeLayer.frame = CGRectMake(0, height, self.me_width, 2);
+    CGPathRef bottomPath = [UIBezierPath bezierPathWithRect:_bottomShapeLayer.frame].CGPath;
+    if (!CGPathEqualToPath(_bottomShapeLayer.path, bottomPath)) {
+        _bottomShapeLayer.path = bottomPath;
     }
 }
 
