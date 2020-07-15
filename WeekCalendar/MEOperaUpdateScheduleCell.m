@@ -67,7 +67,7 @@
 
     bottomShapeLayer = [CAShapeLayer layer];
     bottomShapeLayer.backgroundColor = [UIColor lightGrayColor].CGColor;
-    bottomShapeLayer.borderWidth = 2.0;
+    bottomShapeLayer.borderWidth = 0.5;
     bottomShapeLayer.borderColor = [UIColor lightGrayColor].CGColor;
     bottomShapeLayer.opacity = 1;
     [self.contentView.layer addSublayer:bottomShapeLayer];
@@ -102,7 +102,7 @@
         _shapeLayer.path = path;
     }
     height = height + _shapeLayer.me_height + shapeOffSet + 9;
-    _bottomShapeLayer.frame = CGRectMake(0, height, self.me_width, 2);
+    _bottomShapeLayer.frame = CGRectMake(0, height, self.me_width, 0.5);
     CGPathRef bottomPath = [UIBezierPath bezierPathWithRect:_bottomShapeLayer.frame].CGPath;
     if (!CGPathEqualToPath(_bottomShapeLayer.path, bottomPath)) {
         _bottomShapeLayer.path = bottomPath;
