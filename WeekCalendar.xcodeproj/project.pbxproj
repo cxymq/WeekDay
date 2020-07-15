@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AF15B26E24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15B26D24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m */; };
-		AF15B27124A8BABB002739EA /* MECalendarWeekdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15B27024A8BABB002739EA /* MECalendarWeekdayView.m */; };
-		AF15B27424A8C57C002739EA /* MEWeekdayCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15B27324A8C57C002739EA /* MEWeekdayCalendar.m */; };
 		AF1A073B24A8978800D1B04F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A073A24A8978800D1B04F /* AppDelegate.m */; };
 		AF1A074124A8978800D1B04F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A074024A8978800D1B04F /* ViewController.m */; };
 		AF1A074424A8978800D1B04F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A074224A8978800D1B04F /* Main.storyboard */; };
@@ -20,10 +18,8 @@
 		AF4E876B24A9BE2F00FCE417 /* WeekdayClipUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4E876A24A9BE2F00FCE417 /* WeekdayClipUITests.m */; };
 		AF7FD82124A9F1390055F620 /* MEOperaUpdateScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */; };
 		AF7FD82524A9F1770055F620 /* MEOperaUpdateScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */; };
-		AF82FB7824A8998C000AF878 /* MEWeekdayCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF82FB7724A8998C000AF878 /* MEWeekdayCalendarCell.m */; };
 		AFC9EF5524BDA9F000F948DF /* MEOperaUpdateView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC9EF5424BDA9F000F948DF /* MEOperaUpdateView.m */; };
 		AFDCDCAD24BC337D00D67085 /* MEScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDCDCAC24BC337D00D67085 /* MEScrollView.m */; };
-		AFFF331324A89D80008C7277 /* MEWeekdayHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFFF331224A89D80008C7277 /* MEWeekdayHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,10 +38,6 @@
 /* Begin PBXFileReference section */
 		AF15B26C24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MEWeekdayCalendarExtensions.h"; sourceTree = "<group>"; };
 		AF15B26D24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MEWeekdayCalendarExtensions.m"; sourceTree = "<group>"; };
-		AF15B26F24A8BABB002739EA /* MECalendarWeekdayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MECalendarWeekdayView.h; sourceTree = "<group>"; };
-		AF15B27024A8BABB002739EA /* MECalendarWeekdayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MECalendarWeekdayView.m; sourceTree = "<group>"; };
-		AF15B27224A8C57C002739EA /* MEWeekdayCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWeekdayCalendar.h; sourceTree = "<group>"; };
-		AF15B27324A8C57C002739EA /* MEWeekdayCalendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWeekdayCalendar.m; sourceTree = "<group>"; };
 		AF1A073624A8978800D1B04F /* WeekCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeekCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF1A073924A8978800D1B04F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AF1A073A24A8978800D1B04F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -78,14 +70,10 @@
 		AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateScheduleView.m; sourceTree = "<group>"; };
 		AF7FD82224A9F1770055F620 /* MEOperaUpdateScheduleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateScheduleCell.h; sourceTree = "<group>"; };
 		AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateScheduleCell.m; sourceTree = "<group>"; };
-		AF82FB7624A8998C000AF878 /* MEWeekdayCalendarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWeekdayCalendarCell.h; sourceTree = "<group>"; };
-		AF82FB7724A8998C000AF878 /* MEWeekdayCalendarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWeekdayCalendarCell.m; sourceTree = "<group>"; };
 		AFC9EF5324BDA9F000F948DF /* MEOperaUpdateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateView.h; sourceTree = "<group>"; };
 		AFC9EF5424BDA9F000F948DF /* MEOperaUpdateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateView.m; sourceTree = "<group>"; };
 		AFDCDCAB24BC337D00D67085 /* MEScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEScrollView.h; sourceTree = "<group>"; };
 		AFDCDCAC24BC337D00D67085 /* MEScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEScrollView.m; sourceTree = "<group>"; };
-		AFFF331124A89D80008C7277 /* MEWeekdayHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEWeekdayHeaderView.h; sourceTree = "<group>"; };
-		AFFF331224A89D80008C7277 /* MEWeekdayHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEWeekdayHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,14 +137,6 @@
 				AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */,
 				AF7FD82224A9F1770055F620 /* MEOperaUpdateScheduleCell.h */,
 				AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */,
-				AF15B27224A8C57C002739EA /* MEWeekdayCalendar.h */,
-				AF15B27324A8C57C002739EA /* MEWeekdayCalendar.m */,
-				AF82FB7624A8998C000AF878 /* MEWeekdayCalendarCell.h */,
-				AF82FB7724A8998C000AF878 /* MEWeekdayCalendarCell.m */,
-				AF15B26F24A8BABB002739EA /* MECalendarWeekdayView.h */,
-				AF15B27024A8BABB002739EA /* MECalendarWeekdayView.m */,
-				AFFF331124A89D80008C7277 /* MEWeekdayHeaderView.h */,
-				AFFF331224A89D80008C7277 /* MEWeekdayHeaderView.m */,
 				AF15B26C24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.h */,
 				AF15B26D24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m */,
 				AF1A074224A8978800D1B04F /* Main.storyboard */,
@@ -334,15 +314,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF82FB7824A8998C000AF878 /* MEWeekdayCalendarCell.m in Sources */,
 				AFDCDCAD24BC337D00D67085 /* MEScrollView.m in Sources */,
 				AF7FD82524A9F1770055F620 /* MEOperaUpdateScheduleCell.m in Sources */,
 				AF1A074124A8978800D1B04F /* ViewController.m in Sources */,
 				AF7FD82124A9F1390055F620 /* MEOperaUpdateScheduleView.m in Sources */,
 				AF15B26E24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m in Sources */,
-				AF15B27124A8BABB002739EA /* MECalendarWeekdayView.m in Sources */,
-				AFFF331324A89D80008C7277 /* MEWeekdayHeaderView.m in Sources */,
-				AF15B27424A8C57C002739EA /* MEWeekdayCalendar.m in Sources */,
 				AFC9EF5524BDA9F000F948DF /* MEOperaUpdateView.m in Sources */,
 				AF1A073B24A8978800D1B04F /* AppDelegate.m in Sources */,
 				AF1A074C24A8978B00D1B04F /* main.m in Sources */,
