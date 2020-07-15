@@ -85,9 +85,16 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // 用来区分手滑还是 scrolToItem
     if (!(scrollView.isTracking || scrollView.isDecelerating)) {
+        return;
+    }
+    if ([scrollView isKindOfClass:UITableView.class]) {
         return;
     }
     CGPoint point = [scrollView.panGestureRecognizer translationInView:self];
