@@ -32,11 +32,10 @@ static NSUInteger item;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"剧集更新表";
+    self.title = @"更新表";
     MEOperaUpdateScheduleView *view = [[MEOperaUpdateScheduleView alloc] initWithFrame:CGRectMake(0, (IS_IPHONEX ? 88 : 64), self.view.me_width, 75)];
     view.datas = [self getDatas];
     view.delegate = self;
-    item = 6;
     [self.view addSubview:view];
     _scheduleView = view;
     

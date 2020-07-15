@@ -64,6 +64,7 @@
     cell.weekLabel.font = [UIFont systemFontOfSize:12];
     cell.timeLabel.font = [UIFont systemFontOfSize:17];
     cell.isSelectedFlag = NO;
+// TODO: 此处标记当日应根据实际情况更改
     if ([_datas[indexPath.item][@"week"] isEqualToString:@"三"]) {
         cell.dotIndicator.hidden = NO;
         cell.isSelectedFlag = YES;
@@ -86,6 +87,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+// TODO: 此处 week 应根据实际情况更改
     if ([_endDisplaySelectItem containsObject:_datas[indexPath.item]] && ![_datas[indexPath.item][@"week"] isEqualToString:_nextSelected[@"week"]]) {
         [self deselectDateWithIndexPath:indexPath scheduleCell:(MEOperaUpdateScheduleCell *)cell];
     }
@@ -108,6 +110,7 @@
         cell = (MEOperaUpdateScheduleCell *)[_collectionView cellForItemAtIndexPath:indexPath];
     }
     _nextSelected = _datas[indexPath.item];
+// TODO: 此处标记当日应根据实际情况更改
     if (cell) {
         [_endDisplaySelectItem containsObject:_nextSelected];
         cell.isSelectedFlag = YES;
