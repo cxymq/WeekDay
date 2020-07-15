@@ -146,9 +146,15 @@
     if (![textColor isEqual:_weekLabel.textColor]) {
         _weekLabel.textColor = textColor;
     }
+    if (![self.weekTitle isEqualToString:_weekLabel.text]) {
+        _weekLabel.text = self.weekTitle;
+    }
     textColor = self.colorForTimeLabel;
     if (![textColor isEqual:_timeLabel.textColor]) {
         _timeLabel.textColor = textColor;
+    }
+    if (![self.timeTitle isEqualToString:_timeLabel.text]) {
+        _timeLabel.text = self.timeTitle;
     }
 
     BOOL shouldHideShapeLayer = !self.isSelectedFlag;
