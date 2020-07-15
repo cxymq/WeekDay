@@ -86,6 +86,10 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // 用来区分手滑还是 scrolToItem
+    if (!(scrollView.isTracking || scrollView.isDecelerating)) {
+        return;
+    }
     CGPoint point = [scrollView.panGestureRecognizer translationInView:self];
     if (point.x > 0) {// 右滑
         if (_selected == 0) {
@@ -128,53 +132,13 @@
     }
 }
 
-
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    NSLog(@"scrollViewWillEndDragging-> %F", scrollView.contentOffset.x);
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"scrollViewDidEndDragging-> %F, %@, %f", scrollView.contentOffset.x, decelerate ? @(1) : @(0), UISCREEN_WIDTH);
-//    if ([scrollView isKindOfClass:UITableView.class]) {
-//        return;
-//    }
-//    CGPoint point = [scrollView.panGestureRecognizer translationInView:self];
-//    if (point.x < 0) {
-//        NSUInteger num = ceilf(scrollView.contentOffset.x / UISCREEN_WIDTH);
-//        if (num > _datas.count - 1) {
-//            return;
-//        }
-//        _selected = num;
-//        [self.tableView1 reloadData];
-//        self.scrollView.contentOffset = CGPointMake(UISCREEN_WIDTH * _selected, 0);
-//        self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * _selected, 0, UISCREEN_WIDTH, self.me_height);
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(scrollView:didScrollItem:)]) {
-//            [self.delegate scrollView:self didScrollItem:_datas[_selected]];
-//        }
-//    }
-//    if (point.x > 0) {
-//        NSUInteger num = floor(scrollView.contentOffset.x / UISCREEN_WIDTH);
-//        if (num < 0) {
-//            return;
-//        }
-//        _selected = num;
-//        [self.tableView1 reloadData];
-//        self.scrollView.contentOffset = CGPointMake(UISCREEN_WIDTH * _selected, 0);
-//        self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * _selected, 0, UISCREEN_WIDTH, self.me_height);
-//        if (self.delegate && [self.delegate respondsToSelector:@selector(scrollView:didScrollItem:)]) {
-//            [self.delegate scrollView:self didScrollItem:_datas[_selected]];
-//        }
-//    }
-}
-
 - (void)scrollToItem:(NSInteger)item {
     if (_selected == item) {
         return;
     }
     _selected = item;
-    _refreshIndex = _selected;
     self.scrollView.contentOffset = CGPointMake(UISCREEN_WIDTH * _selected, 0);
+    _refreshIndex = _selected;
     if (_selected % 2 == 0) {
         [self.tableView1 reloadData];
         self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * _selected, 0, UISCREEN_WIDTH, self.me_height);
