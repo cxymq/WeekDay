@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<MEScrollViewDelegate> delegate;
 
+@property (nonatomic, assign) NSInteger selected;
+
 - (instancetype)initWithFrame:(CGRect)frame dataSource:(NSArray *)datas;
 
 - (void)scrollToItem:(NSInteger)item;

@@ -12,7 +12,6 @@
 #import "UIView+MEWeekdayCalendarExtensions.h"
 
 @interface MEScrollView()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate> {
-    NSInteger _selected;
     NSInteger _refreshIndex;
 }
 
@@ -23,6 +22,8 @@
 @property (nonatomic, strong) UITableView *tableView1;
 @property (nonatomic, strong) UITableView *tableView2;
 
+@property (nonatomic, strong) NSMutableDictionary *tableOffsets;
+
 @end
 
 @implementation MEScrollView
@@ -31,9 +32,17 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.datas = datas;
+        self.tableOffsets = [[NSMutableDictionary alloc] init];
+        [self setUpTableOffsetWithData:datas];
         self.scrollView.backgroundColor = UIColor.whiteColor;
     }
     return self;
+}
+
+- (void)setSelected:(NSInteger)selected {
+    _selected = selected;
+    _refreshIndex = selected;
+    [self showViewWithIndex:_selected isSwipe:NO];
 }
 
 - (UIScrollView *)scrollView {
@@ -55,6 +64,9 @@
         [_tableView1 registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
         _tableView1.delegate = self;
         _tableView1.dataSource = self;
+        _tableView1.estimatedRowHeight = 0;
+        _tableView1.estimatedSectionHeaderHeight = 0;
+        _tableView1.estimatedSectionFooterHeight = 0;
         _tableView1.tableFooterView = [UIView new];
         [self.scrollView addSubview:_tableView1];
     }
@@ -67,10 +79,19 @@
         [_tableView2 registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
         _tableView2.delegate = self;
         _tableView2.dataSource = self;
+        _tableView2.estimatedRowHeight = 0;
+        _tableView2.estimatedSectionHeaderHeight = 0;
+        _tableView2.estimatedSectionFooterHeight = 0;
         _tableView2.tableFooterView = [UIView new];
         [self.scrollView addSubview:_tableView2];
     }
     return _tableView2;
+}
+
+- (void)setUpTableOffsetWithData:(NSArray *)arr {
+    for (NSDictionary *dic in arr) {
+        [self.tableOffsets setValue:@(0) forKey:dic[@"time"]];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -105,13 +126,7 @@
             return;
         }
         _refreshIndex = _selected - 1;
-        if ((_selected - 1) % 2 == 0) {
-            [self.tableView1 reloadData];
-            self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * (_selected - 1), 0, UISCREEN_WIDTH, self.me_height);
-        } else {
-            [self.tableView2 reloadData];
-            self.tableView2.frame = CGRectMake(UISCREEN_WIDTH * (_selected - 1), 0, UISCREEN_WIDTH, self.me_height);
-        }
+        [self showViewWithIndex:0 isSwipe:YES];
         NSUInteger num = ceilf(scrollView.contentOffset.x / UISCREEN_WIDTH);
         if (_selected == num) {
             return;
@@ -123,13 +138,7 @@
             return;
         }
         _refreshIndex = _selected + 1;
-        if ((_selected + 1) % 2 == 0) {
-            [self.tableView1 reloadData];
-            self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * (_selected + 1), 0, UISCREEN_WIDTH, self.me_height);
-        } else {
-            [self.tableView2 reloadData];
-            self.tableView2.frame = CGRectMake(UISCREEN_WIDTH * (_selected + 1), 0, UISCREEN_WIDTH, self.me_height);
-        }
+        [self showViewWithIndex:0 isSwipe:YES];
         NSUInteger num = floor(scrollView.contentOffset.x / UISCREEN_WIDTH);
         if (_selected == num) {
             return;
@@ -145,15 +154,29 @@
     if (_selected == item) {
         return;
     }
+    _refreshIndex = item;
+    [self showViewWithIndex:item isSwipe:NO];
     _selected = item;
-    self.scrollView.contentOffset = CGPointMake(UISCREEN_WIDTH * _selected, 0);
-    _refreshIndex = _selected;
+}
+
+- (void)showViewWithIndex:(NSInteger)index isSwipe:(BOOL)isSwipe {
+    if (!isSwipe) {
+        self.scrollView.contentOffset = CGPointMake(UISCREEN_WIDTH * _refreshIndex, 0);
+    }
     if (_selected % 2 == 0) {
+        [self.tableOffsets setValue:_tableView1 ? @(self.tableView1.contentOffset.y) : @(0) forKey:self.datas[_selected][@"time"]];
+    } else {
+        [self.tableOffsets setValue:_tableView2 ? @(self.tableView2.contentOffset.y) : @(0) forKey:self.datas[_selected][@"time"]];
+    }
+    NSDictionary *dic = self.datas[_refreshIndex];
+    if (_refreshIndex % 2 == 0) {
         [self.tableView1 reloadData];
-        self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * _selected, 0, UISCREEN_WIDTH, self.me_height);
+        self.tableView1.frame = CGRectMake(UISCREEN_WIDTH * _refreshIndex, 0, UISCREEN_WIDTH, self.me_height);
+        self.tableView1.contentOffset = CGPointMake(0, [[self.tableOffsets valueForKey:dic[@"time"]] floatValue]);
     } else {
         [self.tableView2 reloadData];
-        self.tableView2.frame = CGRectMake(UISCREEN_WIDTH * _selected, 0, UISCREEN_WIDTH, self.me_height);
+        self.tableView2.frame = CGRectMake(UISCREEN_WIDTH * _refreshIndex, 0, UISCREEN_WIDTH, self.me_height);
+        self.tableView2.contentOffset = CGPointMake(0, [[self.tableOffsets valueForKey:dic[@"time"]] floatValue]);
     }
 }
 
