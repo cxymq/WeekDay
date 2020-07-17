@@ -43,6 +43,8 @@ static NSUInteger item;
     _scrollView.view.frame = CGRectMake(0, (IS_IPHONEX ? 88 : 64) + 75, UISCREEN_WIDTH, UISCREEN_HEIGHT - (IS_IPHONEX ? 88 : 64) - 75);
     _scrollView.datas = [self getDatas2];
     _scrollView.delegate = self;
+    // 用于解决手势冲突（左滑无法返回上一级）
+    [_scrollView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
     [self.view addSubview:_scrollView.view];
     [self addChildViewController:_scrollView];
 }

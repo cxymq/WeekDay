@@ -17,8 +17,6 @@
     NSInteger _selected;
 }
 
-@property (nonatomic, strong) UIScrollView *scrollView;
-
 @property (nonatomic, strong) MEOperaUpdateTableController *tableView;
 
 @end
@@ -42,13 +40,14 @@
         [self.scrollView addSubview:tableView.view];
         [self addChildViewController:tableView];
     } else {
+        __weak typeof(self) weakSelf = self;
         [self.datas enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
             MEOperaUpdateTableController *tableView = [[MEOperaUpdateTableController alloc] init];
             tableView.view.frame = CGRectMake(CGRectGetWidth(self.scrollView.frame) * idx, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
             tableView.datas = dic[@"week"];
             tableView.cellClick = ^(NSDictionary * _Nonnull dic) {
-                if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedCellWithItem:)]) {
-                    [self.delegate didSelectedCellWithItem:dic];
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(didSelectedCellWithItem:)]) {
+                    [weakSelf.delegate didSelectedCellWithItem:dic];
                 }
             };
             [self.scrollView addSubview:tableView.view];

@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) id<MEScrollViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *datas;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 - (void)scrollToItem:(NSInteger)item;
 
