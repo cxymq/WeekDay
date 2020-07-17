@@ -52,6 +52,9 @@
         _scrollView.bounces = NO;
         _scrollView.pagingEnabled = YES;
         _scrollView.alwaysBounceHorizontal = YES;
+        _scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+        _scrollView.delaysContentTouches = NO;
+        [_scrollView flashScrollIndicators];
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
     }
@@ -139,7 +142,6 @@
         num = floor(scrollView.contentOffset.x / UISCREEN_WIDTH);
     }
     if (_selected == num) {
-        _selected = num;
         return;
     }
     _selected = num;
