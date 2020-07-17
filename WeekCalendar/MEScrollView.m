@@ -121,17 +121,14 @@
         return;
     }
     CGPoint point = [scrollView.panGestureRecognizer translationInView:self];
+    NSUInteger num = _refreshIndex;
     if (point.x > 0) {// 右滑
         if (_selected == 0) {
             return;
         }
         _refreshIndex = _selected - 1;
         [self showViewWithIndex:0 isSwipe:YES];
-        NSUInteger num = ceilf(scrollView.contentOffset.x / UISCREEN_WIDTH);
-        if (_selected == num) {
-            return;
-        }
-        _selected = num;
+        num = ceilf(scrollView.contentOffset.x / UISCREEN_WIDTH);
     }
     if (point.x < 0) {// 左滑
         if (_selected == _datas.count - 1) {
@@ -139,12 +136,13 @@
         }
         _refreshIndex = _selected + 1;
         [self showViewWithIndex:0 isSwipe:YES];
-        NSUInteger num = floor(scrollView.contentOffset.x / UISCREEN_WIDTH);
-        if (_selected == num) {
-            return;
-        }
-        _selected = num;
+        num = floor(scrollView.contentOffset.x / UISCREEN_WIDTH);
     }
+    if (_selected == num) {
+        _selected = num;
+        return;
+    }
+    _selected = num;
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollView:didScrollItem:)]) {
         [self.delegate scrollView:self didScrollItem:_datas[_selected]];
     }

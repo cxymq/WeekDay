@@ -94,23 +94,4 @@ static NSUInteger item;
     ];
     return datas;
 }
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSInteger i = item;
-    
-    if (i >= _scheduleView.datas.count - 1) {
-        _sym = YES;
-    }
-    if (i < 1) {
-        _sym = NO;
-    }
-    
-    if (_sym) {
-        i--;
-    } else {
-        i++;
-    }
-    [_scheduleView scrollToItem:i];
-}
-
 @end
