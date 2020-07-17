@@ -13,7 +13,7 @@
 #import "ViewController.h"
 #import "MEOperaUpdateScheduleView.h"
 #import "UIView+MEWeekdayCalendarExtensions.h"
-#import "MEScrollView.h"
+#import "MEScrollViewController.h"
 
 static NSUInteger item;
 
@@ -23,7 +23,7 @@ static NSUInteger item;
 //@property (nonatomic, assign) NSInteger item;
 @property (nonatomic, assign) BOOL sym;
 
-@property (nonatomic, strong) MEScrollView *scrollView;
+@property (nonatomic, strong) MEScrollViewController *scrollView;
 
 @end
 
@@ -39,9 +39,12 @@ static NSUInteger item;
     [self.view addSubview:view];
     _scheduleView = view;
     
-    _scrollView = [[MEScrollView alloc] initWithFrame:CGRectMake(0, (IS_IPHONEX ? 88 : 64) + 75, UISCREEN_WIDTH, UISCREEN_HEIGHT - (IS_IPHONEX ? 88 : 64) - 75) dataSource:[self getDatas2]];
+    _scrollView = [[MEScrollViewController alloc] init];
+    _scrollView.view.frame = CGRectMake(0, (IS_IPHONEX ? 88 : 64) + 75, UISCREEN_WIDTH, UISCREEN_HEIGHT - (IS_IPHONEX ? 88 : 64) - 75);
+    _scrollView.datas = [self getDatas2];
     _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
+    [self.view addSubview:_scrollView.view];
+    [self addChildViewController:_scrollView];
 }
 
 - (void)operaUpdateSchedule:(MEOperaUpdateScheduleView *)view didSelectItem:(NSDictionary *)items {
@@ -50,10 +53,14 @@ static NSUInteger item;
     [self.scrollView scrollToItem:item];
 }
 
-- (void)scrollView:(MEScrollView *)scrollView didScrollItem:(NSDictionary *)items {
+- (void)scrollViewController:(MEScrollViewController *)scrollView didScrollItem:(NSDictionary *)items {
     NSLog(@"scrollView -> %@", items);
     item = [[self getDatas2] indexOfObject:items];
     [self.scheduleView scrollToItem:item];
+}
+
+- (void)didSelectedCellWithItem:(NSDictionary *)item {
+    NSLog(@"didSelectedCellWithItem -> %@", item);
 }
 
 - (NSArray *)getDatas {
@@ -81,8 +88,8 @@ static NSUInteger item;
     NSDictionary *dic3 = @{ @"week" : @[@"22子", @"丑", @"寅", @"卯", @"辰", @"巳", @"午", @"未", @"申", @"酉", @"戌", @"亥"] };
     NSDictionary *dic4 = @{ @"week" : @[@"23金", @"木", @"水", @"火", @"土"] };
     NSDictionary *dic5 = @{ @"week" : @[@"24子鼠", @"丑牛", @"寅虎", @"卯兔", @"辰龙", @"巳蛇", @"午马", @"未羊", @"申猴", @"酉鸡", @"戌狗", @"亥猪"] };
-    NSDictionary *dic6 = @{ @"week" : @[@"25立春", @"雨水", @"惊蛰", @"春分", @"清明", @"谷雨", @"立夏", @"小满", @"芒种", @"夏至", @"小暑", @"大暑"] };
-    NSDictionary *dic7 = @{ @"week" : @[@"26立秋", @"处暑", @"白露", @"秋分", @"寒露", @"霜降", @"立冬", @"小雪", @"大雪", @"冬至", @"小寒", @"大寒"] };
+    NSDictionary *dic6 = @{ @"week" : @[@"25立春", @"雨水", @"惊蛰", @"春分", @"清明", @"谷雨", @"立夏", @"小满", @"芒种", @"夏至", @"小暑", @"大暑", @"26立秋", @"处暑", @"白露", @"秋分", @"寒露", @"霜降", @"立冬", @"小雪", @"大雪", @"冬至", @"小寒", @"大寒"] };
+    NSDictionary *dic7 = @{ @"week" : @[] };
     NSDictionary *dic8 = @{ @"week" : @[@"27春季", @"夏季", @"秋季", @"冬季"] };
     NSDictionary *dic9 = @{ @"week" : @[@"28春节（农历正月初一）", @"元宵节（农历正月十五）", @"龙抬头（农历二月初二）", @"社日节（农历二月初二）", @"寒食节（农历冬至后的105天）", @"清明节（公历4月5日前后）", @"端午节（农历五月初五）", @"七夕节（农历七月初七）", @"中元节（农历七月十五）", @"中秋节（农历八月十五）", @"重阳节（农历九月初九）", @"下元节（农历十月十五）", @"冬至节（公历12月21~23日）", @"除夕（年尾最后一天）"] };
     NSDictionary *dic10 = @{ @"week" : @[@"29冀", @"兖", @"青", @"徐", @"扬", @"荆", @"豫", @"益", @"雍"] };

@@ -5,22 +5,23 @@
 //  Created by nazimai on 2020/7/13.
 //  Copyright © 2020 nazimai. All rights reserved.
 //
-@class MEScrollView;
+@class MEScrollViewController;
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MEScrollViewDelegate <NSObject>
 
-- (void)scrollView:(MEScrollView *)scrollView didScrollItem:(NSDictionary *)item;
+- (void)scrollViewController:(MEScrollViewController *)scrollViewController didScrollItem:(NSDictionary *)item;
+
+- (void)didSelectedCellWithItem:(NSDictionary *)item;
 
 @end
 
-@interface MEScrollView : UIView
+@interface MEScrollViewController : UIViewController
 
 @property (nonatomic, weak) id<MEScrollViewDelegate> delegate;
-
-- (instancetype)initWithFrame:(CGRect)frame dataSource:(NSArray *)datas;
+@property (nonatomic, strong) NSArray *datas;
 
 - (void)scrollToItem:(NSInteger)item;
 
