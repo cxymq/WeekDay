@@ -13,7 +13,8 @@
 #import "ViewController.h"
 #import "MEOperaUpdateScheduleView.h"
 #import "UIView+MEWeekdayCalendarExtensions.h"
-#import "MEScrollViewController.h"
+//#import "MEScrollViewController.h"
+#import "MEScrollView.h"
 
 static NSUInteger item;
 
@@ -23,7 +24,7 @@ static NSUInteger item;
 //@property (nonatomic, assign) NSInteger item;
 @property (nonatomic, assign) BOOL sym;
 
-@property (nonatomic, strong) MEScrollViewController *scrollView;
+@property (nonatomic, strong) MEScrollView *scrollView;
 
 @end
 
@@ -39,14 +40,22 @@ static NSUInteger item;
     [self.view addSubview:view];
     _scheduleView = view;
     
-    _scrollView = [[MEScrollViewController alloc] init];
-    _scrollView.view.frame = CGRectMake(0, (IS_IPHONEX ? 88 : 64) + 75, UISCREEN_WIDTH, UISCREEN_HEIGHT - (IS_IPHONEX ? 88 : 64) - 75);
-    _scrollView.datas = [self getDatas2];
-    _scrollView.delegate = self;
+//    _scrollView = [[MEScrollViewController alloc] init];
+//    _scrollView.view.frame = CGRectMake(0, (IS_IPHONEX ? 88 : 64) + 75, UISCREEN_WIDTH, UISCREEN_HEIGHT - (IS_IPHONEX ? 88 : 64) - 75);
+//    _scrollView.datas = [self getDatas2];
+//    _scrollView.delegate = self;
+//    // 用于解决手势冲突（左滑无法返回上一级）
+//    [_scrollView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+//    [self.view addSubview:_scrollView.view];
+//    [self addChildViewController:_scrollView];
+    
+    self.scrollView = [[MEScrollView alloc] init];
+    self.scrollView.frame = CGRectMake(0, (IS_IPHONEX ? 88 : 64) + 75, UISCREEN_WIDTH, UISCREEN_HEIGHT - (IS_IPHONEX ? 88 : 64) - 75);
+    self.scrollView.datas = [self getDatas2];
+    self.scrollView.delegate = self;
     // 用于解决手势冲突（左滑无法返回上一级）
-    [_scrollView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
-    [self.view addSubview:_scrollView.view];
-    [self addChildViewController:_scrollView];
+//    [self.scrollView.scrollView.panGestureRecognizer requireGestureRecognizerToFail:self.navigationController.interactivePopGestureRecognizer];
+    [self.view addSubview:_scrollView];
 }
 
 - (void)operaUpdateSchedule:(MEOperaUpdateScheduleView *)view didSelectItem:(NSDictionary *)items {
@@ -55,7 +64,7 @@ static NSUInteger item;
     [self.scrollView scrollToItem:item];
 }
 
-- (void)scrollViewController:(MEScrollViewController *)scrollView didScrollItem:(NSDictionary *)items {
+- (void)scrollView:(MEScrollView *)scrollView didScrollItem:(NSDictionary *)items {
     NSLog(@"scrollView -> %@", items);
     item = [[self getDatas2] indexOfObject:items];
     [self.scheduleView scrollToItem:item];

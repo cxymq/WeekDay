@@ -2,23 +2,23 @@
 //  MEScrollView.h
 //  WeekCalendar
 //
-//  Created by nazimai on 2020/7/13.
+//  Created by nazimai on 2020/7/22.
 //  Copyright © 2020 nazimai. All rights reserved.
 //
-@class MEScrollViewController;
+@class MEScrollView;
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MEScrollViewDelegate <NSObject>
 
-- (void)scrollViewController:(MEScrollViewController *)scrollViewController didScrollItem:(NSDictionary *)item;
+- (void)scrollView:(MEScrollView *)scrollView didScrollItem:(NSDictionary *)item;
 
 - (void)didSelectedCellWithItem:(NSDictionary *)item;
 
 @end
 
-@interface MEScrollViewController : UIViewController
+@interface MEScrollView : UIView
 
 @property (nonatomic, weak) id<MEScrollViewDelegate> delegate;
 @property (nonatomic, strong) NSArray *datas;

@@ -1,52 +1,42 @@
 //
-//  MEOperaUpdateTableController.m
+//  MEOperaUpdateTableView.m
 //  WeekCalendar
 //
-//  Created by nazimai on 2020/7/17.
+//  Created by nazimai on 2020/7/22.
 //  Copyright © 2020 nazimai. All rights reserved.
 //
 
-#import "MEOperaUpdateTableController.h"
+#import "MEOperaUpdateTableView.h"
+@interface MEOperaUpdateTableView () <UITableViewDelegate, UITableViewDataSource>
 
-@interface MEOperaUpdateTableController () <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *nilView;
 
 @end
 
-@implementation MEOperaUpdateTableController
+@implementation MEOperaUpdateTableView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.delegate = self;
+        self.dataSource = self;
+        [self registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    }
+    return self;
 }
 
 - (void)setDatas:(NSArray *)datas {
     _datas = datas;
     if (datas.count > 0) {
-        self.tableView.backgroundColor = UIColor.systemPinkColor;
+        self.backgroundColor = UIColor.systemPinkColor;
     } else {
         self.nilView.backgroundColor = UIColor.lightGrayColor;
     }
 }
 
-#pragma mark - 初始化视图
-- (UITableView *)tableView {
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        [_tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"Cell"];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        [self.view addSubview:_tableView];
-    }
-    return _tableView;
-}
-
 - (UIView *)nilView {
     if (!_nilView) {
-        _nilView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _nilView = [[UIView alloc] initWithFrame:self.bounds];
         UIImageView *nilImgView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
         nilImgView.image = [UIImage imageNamed:@"m_musume_alpha3"];
         [_nilView addSubview:nilImgView];
@@ -55,7 +45,7 @@
         nilLabel.textAlignment = NSTextAlignmentCenter;
         nilLabel.font = [UIFont systemFontOfSize:12];
         [_nilView addSubview:nilLabel];
-        [self.view addSubview:_nilView];
+        [self addSubview:_nilView];
     }
     return _nilView;
 }
@@ -80,5 +70,13 @@
         self.cellClick(self.datas[indexPath.row]);
     }
 }
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end

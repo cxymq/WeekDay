@@ -14,12 +14,12 @@
 		AF1A074624A8978B00D1B04F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF1A074524A8978B00D1B04F /* Assets.xcassets */; };
 		AF1A074924A8978B00D1B04F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF1A074724A8978B00D1B04F /* LaunchScreen.storyboard */; };
 		AF1A074C24A8978B00D1B04F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A074B24A8978B00D1B04F /* main.m */; };
-		AF2F007924C165FC00905891 /* MEOperaUpdateTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2F007824C165FC00905891 /* MEOperaUpdateTableController.m */; };
 		AF4E876024A9BE2F00FCE417 /* WeekdayClipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4E875F24A9BE2F00FCE417 /* WeekdayClipTests.m */; };
 		AF4E876B24A9BE2F00FCE417 /* WeekdayClipUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4E876A24A9BE2F00FCE417 /* WeekdayClipUITests.m */; };
 		AF7FD82124A9F1390055F620 /* MEOperaUpdateScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */; };
 		AF7FD82524A9F1770055F620 /* MEOperaUpdateScheduleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */; };
-		AFDCDCAD24BC337D00D67085 /* MEScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDCDCAC24BC337D00D67085 /* MEScrollViewController.m */; };
+		AF92878324C7DAFB00A8AF4E /* MEScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF92878224C7DAFB00A8AF4E /* MEScrollView.m */; };
+		AF92878624C7DB6C00A8AF4E /* MEOperaUpdateTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF92878524C7DB6C00A8AF4E /* MEOperaUpdateTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,8 +48,6 @@
 		AF1A074824A8978B00D1B04F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF1A074A24A8978B00D1B04F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF1A074B24A8978B00D1B04F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		AF2F007724C165FC00905891 /* MEOperaUpdateTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateTableController.h; sourceTree = "<group>"; };
-		AF2F007824C165FC00905891 /* MEOperaUpdateTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateTableController.m; sourceTree = "<group>"; };
 		AF4E874224A9BE2E00FCE417 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AF4E874324A9BE2E00FCE417 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		AF4E874524A9BE2E00FCE417 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
@@ -72,8 +70,10 @@
 		AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateScheduleView.m; sourceTree = "<group>"; };
 		AF7FD82224A9F1770055F620 /* MEOperaUpdateScheduleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateScheduleCell.h; sourceTree = "<group>"; };
 		AF7FD82324A9F1770055F620 /* MEOperaUpdateScheduleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateScheduleCell.m; sourceTree = "<group>"; };
-		AFDCDCAB24BC337D00D67085 /* MEScrollViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEScrollViewController.h; sourceTree = "<group>"; };
-		AFDCDCAC24BC337D00D67085 /* MEScrollViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEScrollViewController.m; sourceTree = "<group>"; };
+		AF92878124C7DAFB00A8AF4E /* MEScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEScrollView.h; sourceTree = "<group>"; };
+		AF92878224C7DAFB00A8AF4E /* MEScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEScrollView.m; sourceTree = "<group>"; };
+		AF92878424C7DB6C00A8AF4E /* MEOperaUpdateTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MEOperaUpdateTableView.h; sourceTree = "<group>"; };
+		AF92878524C7DB6C00A8AF4E /* MEOperaUpdateTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MEOperaUpdateTableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +129,7 @@
 				AF1A073A24A8978800D1B04F /* AppDelegate.m */,
 				AF1A073F24A8978800D1B04F /* ViewController.h */,
 				AF1A074024A8978800D1B04F /* ViewController.m */,
-				AF2F007724C165FC00905891 /* MEOperaUpdateTableController.h */,
-				AF2F007824C165FC00905891 /* MEOperaUpdateTableController.m */,
-				AFDCDCAB24BC337D00D67085 /* MEScrollViewController.h */,
-				AFDCDCAC24BC337D00D67085 /* MEScrollViewController.m */,
+				AF92878024C7DACC00A8AF4E /* tableViews */,
 				AF7FD81F24A9F1390055F620 /* MEOperaUpdateScheduleView.h */,
 				AF7FD82024A9F1390055F620 /* MEOperaUpdateScheduleView.m */,
 				AF7FD82224A9F1770055F620 /* MEOperaUpdateScheduleCell.h */,
@@ -183,6 +180,17 @@
 				AF4E876C24A9BE2F00FCE417 /* Info.plist */,
 			);
 			path = WeekdayClipUITests;
+			sourceTree = "<group>";
+		};
+		AF92878024C7DACC00A8AF4E /* tableViews */ = {
+			isa = PBXGroup;
+			children = (
+				AF92878124C7DAFB00A8AF4E /* MEScrollView.h */,
+				AF92878224C7DAFB00A8AF4E /* MEScrollView.m */,
+				AF92878424C7DB6C00A8AF4E /* MEOperaUpdateTableView.h */,
+				AF92878524C7DB6C00A8AF4E /* MEOperaUpdateTableView.m */,
+			);
+			path = tableViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,12 +322,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFDCDCAD24BC337D00D67085 /* MEScrollViewController.m in Sources */,
-				AF2F007924C165FC00905891 /* MEOperaUpdateTableController.m in Sources */,
 				AF7FD82524A9F1770055F620 /* MEOperaUpdateScheduleCell.m in Sources */,
 				AF1A074124A8978800D1B04F /* ViewController.m in Sources */,
 				AF7FD82124A9F1390055F620 /* MEOperaUpdateScheduleView.m in Sources */,
 				AF15B26E24A8A6EA002739EA /* UIView+MEWeekdayCalendarExtensions.m in Sources */,
+				AF92878624C7DB6C00A8AF4E /* MEOperaUpdateTableView.m in Sources */,
+				AF92878324C7DAFB00A8AF4E /* MEScrollView.m in Sources */,
 				AF1A073B24A8978800D1B04F /* AppDelegate.m in Sources */,
 				AF1A074C24A8978B00D1B04F /* main.m in Sources */,
 			);

@@ -2,30 +2,24 @@
 //  MEScrollView.m
 //  WeekCalendar
 //
-//  Created by nazimai on 2020/7/13.
+//  Created by nazimai on 2020/7/22.
 //  Copyright © 2020 nazimai. All rights reserved.
 //
+
 #define IS_IPHONEX                              ([UIScreen mainScreen].bounds.size.height == 812 || [UIScreen mainScreen].bounds.size.width == 812 || [UIScreen mainScreen].bounds.size.height == 896 || [UIScreen mainScreen].bounds.size.width == 896)
 #define UISCREEN_WIDTH  ([UIScreen mainScreen].bounds.size.width)
 #define UISCREEN_HEIGHT  ([UIScreen mainScreen].bounds.size.height)
 
-#import "MEScrollViewController.h"
+#import "MEOperaUpdateTableView.h"
+#import "MEScrollView.h"
 #import "UIView+MEWeekdayCalendarExtensions.h"
-#import "MEOperaUpdateTableController.h"
 
-@interface MEScrollViewController() <UITableViewDelegate, UIScrollViewDelegate> {
+@interface MEScrollView() <UIScrollViewDelegate> {
     NSInteger _selected;
 }
-
-@property (nonatomic, strong) MEOperaUpdateTableController *tableView;
-
 @end
 
-@implementation MEScrollViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
+@implementation MEScrollView
 
 - (void)setDatas:(NSArray *)datas {
     _datas = datas;
@@ -34,37 +28,35 @@
 
 - (void)setUpTableView {
     if (self.datas.count <=0 ) {
-        MEOperaUpdateTableController *tableView = [[MEOperaUpdateTableController alloc] init];
-        tableView.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
+        MEOperaUpdateTableView *tableView = [[MEOperaUpdateTableView alloc] init];
+        tableView.frame = CGRectMake(0, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
         tableView.datas = self.datas;
-        [self.scrollView addSubview:tableView.view];
-        [self addChildViewController:tableView];
+        [self.scrollView addSubview:tableView];
     } else {
         __weak typeof(self) weakSelf = self;
         [self.datas enumerateObjectsUsingBlock:^(NSDictionary *dic, NSUInteger idx, BOOL * _Nonnull stop) {
-            MEOperaUpdateTableController *tableView = [[MEOperaUpdateTableController alloc] init];
-            tableView.view.frame = CGRectMake(CGRectGetWidth(self.scrollView.frame) * idx, 0, CGRectGetWidth(self.scrollView.frame), CGRectGetHeight(self.scrollView.frame));
+            MEOperaUpdateTableView *tableView = [[MEOperaUpdateTableView alloc] init];
+            tableView.frame = CGRectMake(CGRectGetWidth(self.frame) * idx, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame));
             tableView.datas = dic[@"week"];
             tableView.cellClick = ^(NSDictionary * _Nonnull dic) {
-                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(didSelectedCellWithItem:)]) {
-                    [weakSelf.delegate didSelectedCellWithItem:dic];
+                if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedCellWithItem:)]) {
+                    [self.delegate didSelectedCellWithItem:dic];
                 }
             };
-            [self.scrollView addSubview:tableView.view];
-            [self addChildViewController:tableView];
+            [self.scrollView addSubview:tableView];
         }];
     }
 }
 
 - (UIScrollView *)scrollView {
     if (!_scrollView) {
-        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
-        _scrollView.contentSize = CGSizeMake(MAX(self.view.me_width, self.view.me_width * _datas.count), 0);
+        _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame))];
+        _scrollView.contentSize = CGSizeMake(MAX(self.me_width, self.me_width * _datas.count), 0);
         _scrollView.bounces = NO;
         _scrollView.pagingEnabled = YES;
         _scrollView.alwaysBounceHorizontal = YES;
         _scrollView.delegate = self;
-        [self.view addSubview:_scrollView];
+        [self addSubview:_scrollView];
     }
     return _scrollView;
 }
@@ -77,8 +69,8 @@
     }
     _selected = num;
     NSLog(@"scrollViewDidScroll num : %ld", num);
-    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewController:didScrollItem:)]) {
-        [self.delegate scrollViewController:self didScrollItem:self.datas[num]];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(scrollView:didScrollItem:)]) {
+        [self.delegate scrollView:self didScrollItem:self.datas[num]];
     }
 }
 
@@ -90,5 +82,13 @@
     _selected = item;
     self.scrollView.contentOffset = CGPointMake(UISCREEN_WIDTH * _selected, 0);
 }
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end
